@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buyi.indispensable.dao.Usermapper">
+    <insert id="userInsert" parameterType="User">
+        INSERT INTO `user` (
+          `u_name`,
+          `u_phone`,
+          `u_recommend`
+        )
+        VALUES
+          (
+            #{uname},
+            #{uphone},
+            #{urecommend}
+          )
+    </insert>
+
+    <select id="userPhone" parameterType="String" resultType="User">
+        select `u_id`,`u_name`,`u_phone`,`u_recommend`,`u_brokerage`,`u_bank`
+        from `user`
+        where `u_phone` = #{uphone}
+    </select>
+
+    <select id="userRepetition" parameterType="String" resultType="int">
+        select count(1)
+        from `user`
+        where `u_phone` = #{uphone}
+    </select>
+
+    <select id="accomplish" parameterType="long" resultType="int">
+        select `u_recommend`
+        from `user`
+        where `u_id` = #{uId}
+    </select>
+
+
+    <update id="brokerageAdd">
+        update
+          `user`
+        set
+          `u_brokerage` = `u_brokerage`+#{addBrokerage}
+        where `u_id` = #{u_id}
+    </update>
+
+    <update id="brokerageMinus">
+        update
+          `user`
+        set
+          `u_brokerage` = `u_brokerage`-#{minusBrokerage}
+        where `u_id` = #{uId}
+    </update>
+
+    <update id="updatebank" parameterType="String">
+        update
+          `user`
+        set
+          `u_bank` = #{bank}
+        where `u_id` = #{uId}
+    </update>
+</mapper>

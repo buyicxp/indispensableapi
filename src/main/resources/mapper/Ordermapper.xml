@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buyi.indispensable.dao.Ordermapper">
+    <insert id="orderInsert" parameterType="Order">
+        insert into `order` (
+              `u_id`,
+              `t_id`
+            )
+            values
+              (
+                #{uId},
+                #{tId}
+              )
+
+    </insert>
+</mapper>

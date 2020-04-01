@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buyi.indispensable.dao.Withdrawmapper">
+    <insert id="withdrawInsert" parameterType="Withdraw">
+        INSERT INTO `withdraw` (
+              `u_id`,
+              `w_monew`
+            )
+            VALUES
+              (
+                #{uId},
+                #{wMonew}
+              )
+    </insert>
+    <update id="withdrawUpdate" parameterType="Withdraw">
+        UPDATE
+              `withdraw`
+            SET
+              `w_state` = 1
+            WHERE `w_id` = #{wId}
+
+    </update>
+</mapper>
